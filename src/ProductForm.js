@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Form} from "reactstrap"
 
-const RESET_VALUES = {id: '', category: '', price: '', name: ''}
+const RESET_VALUES = {id: '', name: '', category: '', price: ''}
 
 class ProductForm extends Component{
     constructor(props) {
@@ -10,10 +10,11 @@ class ProductForm extends Component{
         this.state = {
             product: Object.assign({}, RESET_VALUES), errors: {}
         }
-        this.handleSave = this.handleSave.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSave = this.handleSave.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
    
+
     handleSave(e) {
         this.props.onSave(this.state.product)
         this.setState({
@@ -33,7 +34,7 @@ class ProductForm extends Component{
             })
     }
 
-    render(){
+        render(){
         return (
             <Form>
                 <h2>Enter a new product</h2>
@@ -55,4 +56,6 @@ class ProductForm extends Component{
     }
 }
 
-export default ProductForm;
+
+
+export default ProductForm

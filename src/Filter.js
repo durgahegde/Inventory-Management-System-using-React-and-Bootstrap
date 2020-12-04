@@ -20,6 +20,7 @@ class Filter extends Component{
     return(
         <div style={{marginTop: 25}}  className="searchform"> 
         <input size='25' id='searchText' type='text' placeholder='Search...' name="filterText" onChange={this.handleChange}  /> 
+        <div> &nbsp; </div>
         </div>
     );
     }

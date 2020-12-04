@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import Product from './Products'
+import Product from './Product'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container'
 

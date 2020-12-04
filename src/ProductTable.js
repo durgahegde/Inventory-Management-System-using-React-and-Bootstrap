@@ -1,52 +1,51 @@
 import React, {Component} from "react";
 import ProductRow from "./ProductRow";
-import {Table} from 'reactstrap'
 
 
 class ProductTable extends Component{
     constructor(props) {
-        super(props);
-        this.state = {
-            product: props.product,
-            filterText: props.filterText
-        };
+        super(props)
         this.handleDestroy = this.handleDestroy.bind(this)
     }
 
     handleDestroy(id) {
         this.props.onDestroy(id)
-   }
- 
+    }
     
-    render(){
-        return(
+    render () {
+        let productsArray = Object.keys(this.props.products).map((pid) => this.props.products[pid])
+        let rows = []
+
+        productsArray.forEach((product) => {
+            if (product.name.indexOf(this.props.filterText) === -1) {
+                return
+            }
+            rows.push (
+                <ProductRow 
+                    product={product} 
+                    key={product.id} 
+                    onDestroy={this.handleDestroy}></ProductRow>
+            )
+        })
+
+        return (
             <div>
-                <Table striped bordered hover style={{marginTop: 30}}>
-                            <thead style={{background: "gray"}}>
-                                <th scope="col">Name</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Price</th>
-                                <th scope="col"></th>
-                            </thead>
-                            <tbody>
-                                {Object.values(this.state.product).filter(product=>{
-                                    if(this.props.filterText === undefined){
-                                        return true;
-                                    }
-                                        return product.name.indexOf(this.props.filterText) >=0;
-                                    })
-                                    .map(product =>{
-                                        return(
-                                            <ProductRow product={product} key={product.id} onDestroy={this.handleDestroy} />
-                                        );
-                                    })}    
-                            </tbody>
-                </Table>
+                <table class="table table-striped table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
             </div>
         )
     }
-
 }
-
 
 export default ProductTable;

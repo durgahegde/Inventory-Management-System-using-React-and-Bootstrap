@@ -31,8 +31,8 @@ let PRODUCTS = {
     if (!product.id){
         product.id = new Date().getTime()
     }
-    this.setState((prevSate)=>{
-        let products = prevSate.products
+    this.setState((prevState)=>{
+        let products = prevState.products
         products[product.id] = product
         return {products}
     });
@@ -52,8 +52,10 @@ let PRODUCTS = {
             <div>
                 <h1>My Inventory</h1>
                 <Filters onFilter={this.handleFilter}/>
-                <ProductTable product={PRODUCTS}> </ProductTable>
-                <ProductForm onSave={this.handleSave} onDestroy={this.handleDestroy}></ProductForm>
+                <ProductTable products={this.state.products}
+                   filterText={this.state.filterText}
+                   onDestroy={this.handleDestroy}> </ProductTable>
+                <ProductForm onSave={this.handleSave} ></ProductForm>
             </div>
             );
         }
