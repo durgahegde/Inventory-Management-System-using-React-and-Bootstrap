@@ -36,22 +36,27 @@ class ProductForm extends Component{
 
         render(){
         return (
-            <Form>
-                <h2>Enter a new product</h2>
-                <div className="form-group">
-                    <label>Name</label><br/>
-                    <input type="text" onChange={this.handleChange} value={this.state.product.name} /><br/>
-                </div>
-                <div className="form-group">
-                    <label>Category</label><br/>
-                    <input type="text" onChange={this.handleChange} value={this.state.product.category}/><br/>
-                </div>
-                <div className="form-group">
-                    <label>Price</label><br/>
-                    <input type="text" onChange={this.handleChange} value={this.state.product.price}/><br/>
-                </div>
-                <button class="btn btn-primary" type="submit" onClick={this.handleSave}>Save</button>
-            </Form>
+            <div>
+            <h2>Add New Product</h2>
+            <div className="col-md-6">
+                <form> 
+                    <div className="form-group">
+                        <label>Name</label>
+                        <input className="form-control" id="productName" type="text" onChange={this.handleChange} value={this.state.product.name} name="name"></input>
+                    </div>
+                    <div className="form-group">
+                        <label>Category</label>
+                        <input className="form-control" id="productCategory" type="text" onChange={this.handleChange} value={this.state.product.category} name="category"></input>
+                    </div>
+                    <div className="form-group">
+                        <label>Price</label>
+                        <input className="form-control" id="productPrice" type="text" onChange={this.handleChange} value={this.state.product.price} name="price"></input>
+                    </div>
+                
+                    <button className="btn btn-primary" type="button" onClick={this.handleSave}>Save</button>
+                </form>
+            </div>
+        </div>
         );  
     }
 }
